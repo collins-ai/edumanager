@@ -1,9 +1,8 @@
 import { NavLink } from "react-router"
-import { FaUser } from "react-icons/fa"
 import { MdDashboard, MdSettings } from "react-icons/md"
 import { BiLogOut, BiSolidBook, BiSolidGraduation, BiSolidReport, BiSolidUser } from "react-icons/bi"
 
-const Sidebar = ({ toggleNavmenu }) => {
+const Sidebar = ({ navmenu, setNavmenu }) => {
   const links = [
     { _id: 1, title: `Dashboard`, path: `/`, icon: <MdDashboard className="text-2xl" /> },
     { _id: 2, title: `Students`, path: `/students`, icon: <BiSolidUser className="text-2xl" /> },
@@ -12,16 +11,21 @@ const Sidebar = ({ toggleNavmenu }) => {
     { _id: 5, title: `Settings`, path: `/settings`, icon: <MdSettings className="text-2xl" /> }
   ]
 
+  const closeNavmenu = () => {
+    setNavmenu(previous => !previous)
+    document.body.classList.remove(`overflow-hidden`)
+  }
+
   return (
-    <nav className="fixed inset-0 flex">
-      <div className="bg-white w-4/5 flex flex-col gap-8 p-4">
-        <div className="text-blue-500 flex items-center gap-3">
+    <nav className={`${navmenu ? 'flex' : 'hidden'} fixed inset-0 z-10 sm:flex sm:static`}>
+      <div className="bg-white w-4/5 flex flex-col gap-8 p-4 sm:w-full">
+        <div className="text-blue-500 flex items-center gap-2">
           <BiSolidGraduation className="text-4xl" />
           <span className="text-2xl font-bold">EduManager</span>
         </div>
         <div className="flex flex-col gap-2">
           {links.map(link => 
-            <NavLink key={link._id} to={link.path} onClick={toggleNavmenu} className={({isActive}) => `flex items-center gap-2 p-2 ${isActive && 'bg-blue-500 text-white rounded-lg'}`}>
+            <NavLink key={link._id} to={link.path} onClick={closeNavmenu} className={({isActive}) => `flex items-center gap-2 p-2 ${isActive && 'bg-blue-500 text-white rounded-lg'}`}>
               {link.icon}
               <span>{link.title}</span>
             </NavLink>
@@ -32,7 +36,7 @@ const Sidebar = ({ toggleNavmenu }) => {
           <span>Logout</span>
         </button>
       </div>
-      <div onClick={toggleNavmenu} className="bg-black/50 w-1/5"></div>
+      <div onClick={closeNavmenu} className="bg-black/50 w-1/5"></div>
     </nav>
   )
 }

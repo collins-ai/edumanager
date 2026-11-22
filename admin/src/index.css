@@ -5,5 +5,5 @@
 }
 
 @utility lgwidth {
-    flex: 0 0 calc((100% - 180px) / 4);
+    flex: 0 0 calc((100% - 48px) / 4);
 }
