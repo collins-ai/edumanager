@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@utility smwidth {
+    flex: 0 0 calc((100% - 16px) / 2);
+}
+
+@utility lgwidth {
+    flex: 0 0 calc((100% - 180px) / 4);
+}
