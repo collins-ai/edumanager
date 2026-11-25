@@ -10,8 +10,8 @@ const Students = () => {
   ]
 
   return (
-    <div className="bg-white rounded-xl flex flex-col gap-4 p-4">
-      <div className="flex justify-between items-center">
+    <div className="bg-white rounded-xl flex flex-col gap-4 p-4 shadow-sm shadow-neutral-200">
+      <div className="flex justify-between items-center gap-5">
         <p className="font-bold">Recent Students</p>
         <button type="button" className="bg-blue-500 text-white flex items-center gap-2 px-4 py-2 rounded-lg cursor-pointer">
           <MdAdd className="text-2xl" />
@@ -30,14 +30,14 @@ const Students = () => {
         <div className="">
           {students.map(({ _id, name, course, enrollment, status }) => 
             <div key={_id} className="w-max flex items-center gap-5 p-2 border-b border-b-neutral-100 sm:w-full">
-              <span className="w-30 truncate sm:w-2/10">{_id}</span>
-              <span className="w-20 truncate sm:w-1/10">{name}</span>
-              <span className="w-30 truncate sm:w-2/10">{course}</span>
-              <span className="w-30 truncate sm:w-2/10">{enrollment}</span>
-              <div className="w-20 truncate sm:w-1/10">
+              <span className="w-30 line-clamp-1 sm:w-2/10">{_id}</span>
+              <span className="w-20 line-clamp-1 sm:w-1/10">{name}</span>
+              <span className="w-30 line-clamp-1 sm:w-2/10">{course}</span>
+              <span className="w-30 line-clamp-1 sm:w-2/10">{enrollment}</span>
+              <div className="w-20 sm:w-1/10">
                 <span className="bg-green-100 text-green-500 font-semibold px-2 py-1">{status}</span>
               </div>
-              <div className="flex gap-2 w-40 truncate sm:w-2/10">
+              <div className="flex gap-2 w-40 sm:w-2/10">
                 <button type="button" className="bg-blue-100 text-blue-500 px-2 py-1 flex items-center gap-1 rounded-lg cursor-pointer">
                   <BiEdit />
                   <span className="">edit</span>
